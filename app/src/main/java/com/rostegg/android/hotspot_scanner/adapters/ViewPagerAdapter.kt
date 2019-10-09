@@ -6,10 +6,11 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.rostegg.android.hotspot_scanner.fragments.ImportFragment
 import com.rostegg.android.hotspot_scanner.fragments.ScanFragment
 import com.rostegg.android.hotspot_scanner.fragments.FragmentMetadata
+import com.rostegg.android.hotspot_scanner.fragments.MapFragment
 
 class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    private val fragmentsList = listOf<Fragment>(ScanFragment(), ImportFragment())
+    private val fragmentsList = listOf<Fragment>(ScanFragment(), ImportFragment(), MapFragment())
 
     override fun getItem(position: Int): Fragment? {
         return fragmentsList[position]
