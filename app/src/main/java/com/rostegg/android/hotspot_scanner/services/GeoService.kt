@@ -21,8 +21,8 @@ class GeoService (context: Context) {
             cos(toRadians(from.latitude)) * cos(toRadians(to.latitude)) *
             sin(dLon/2) * sin(dLon/2)
 
-        var c = 2 * atan2(sqrt(a), sqrt(1-a))
-        var d = R * c
+        val c = 2 * atan2(sqrt(a), sqrt(1-a))
+        val d = R * c
         return  round(d) / 1000
     }
 }

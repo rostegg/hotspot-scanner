@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.LinearLayout
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.rostegg.android.hotspot_scanner.R
 import com.rostegg.android.hotspot_scanner.services.OUIService
+import com.rostegg.android.hotspot_scanner.services.SessionStorage
 import org.koin.android.ext.android.inject
 
 class ListFragment: Fragment(), FragmentMetadata {
@@ -20,8 +20,8 @@ class ListFragment: Fragment(), FragmentMetadata {
     var listItems = ArrayList<String>()
     var adapter: ArrayAdapter<String>? = null
 
-    private val ouiService: OUIService by inject()
-
+    //private val ouiService: OUIService by inject()
+    private val sessionStorage: SessionStorage by inject()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,14 +34,14 @@ class ListFragment: Fragment(), FragmentMetadata {
         adapter = ArrayAdapter(
             this.activity!!.applicationContext,
             android.R.layout.simple_spinner_item,
-            listItems
+            sessionStorage.currentStorage
         )
 
         listView.adapter = adapter
-        ouiService.ouiListCached.forEach{ item ->
+        /*ouiService.ouiListCached.forEach{ item ->
             listItems.add(item.assignment)
             adapter!!.notifyDataSetChanged()
-        }
+        }*/
         return view
     }
 }
