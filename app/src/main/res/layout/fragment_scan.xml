@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/hotspotListLayout">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/justText"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@+id/InnerRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+        <Button
+            android:id="@+id/scanBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="15dp"
+            android:background="#4CAF50" />
+    </RelativeLayout>
 
-    <ListView
-        android:id="@+id/wifiList"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.97"/>
 
-    <Button
-        android:id="@+id/scanBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom"
-        android:layout_margin="15dp"
-        android:background="#4CAF50"
-        android:text="@string/scan_button" />
-
-</LinearLayout>
+</RelativeLayout>
