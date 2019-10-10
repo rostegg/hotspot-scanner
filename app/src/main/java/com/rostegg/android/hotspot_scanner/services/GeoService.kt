@@ -23,6 +23,10 @@ class GeoService (context: Context) {
 
         val c = 2 * atan2(sqrt(a), sqrt(1-a))
         val d = R * c
-        return  round(d) / 1000
+        return  round(d)
+    }
+
+    fun distanceInKm(from : GeoPoint, to: GeoPoint) :Double {
+        return distance(from, to) / 1000
     }
 }

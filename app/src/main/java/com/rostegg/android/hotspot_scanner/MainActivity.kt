@@ -2,12 +2,13 @@ package com.rostegg.android.hotspot_scanner
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity
 import com.rostegg.android.hotspot_scanner.adapters.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import org.osmdroid.config.Configuration
 import java.io.File
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : CyaneaAppCompatActivity() {
 
     private lateinit var viewPageAdapter: ViewPagerAdapter
 

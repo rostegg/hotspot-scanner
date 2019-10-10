@@ -1,17 +1,21 @@
 package com.rostegg.android.hotspot_scanner.services.scanners
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
+import android.content.res.Configuration
 import android.net.wifi.ScanResult
 import android.net.wifi.WifiManager
 import android.widget.Toast
+import com.rostegg.android.hotspot_scanner.services.SessionStorage
+import org.koin.android.ext.android.inject
 import android.util.Log as Log
 
-class WifiActiveScanner (val context: Context) : WifiScannerBase {
+class WifiActiveScanner (val context: Context) : WifiScannerBase, ComponentCallbacks {
 
     private val wifiManager = context.getSystemService(Context.WIFI_SERVICE) as WifiManager
+
+    override fun onConfigurationChanged(newConfig: Configuration) {}
+
+    override fun onLowMemory() {}
 
     private val wifiScanReceiver = object : BroadcastReceiver() {
 
@@ -23,8 +27,14 @@ class WifiActiveScanner (val context: Context) : WifiScannerBase {
         }
     }
 
+    private val sessionStorage: SessionStorage by inject()
     private fun scanSuccess() {
         Log.i("SCANNER_IN", wifiManager.scanResults.toString())
+        var listItems = ArrayList<String>()
+        wifiManager.scanResults.forEach{item ->
+            listItems.add(item.BSSID)
+        }
+        sessionStorage.addToStorage(listItems)
         // some callback logic
     }
 

@@ -42,4 +42,5 @@ dependencies {
     implementation 'com.github.doyaaaaaken:kotlin-csv-jvm:0.7.3'
     implementation "org.koin:koin-core:2.0.1"
     implementation "org.koin:koin-android:2.0.1"
+    implementation 'com.jaredrummler:cyanea:1.0.2'
 }

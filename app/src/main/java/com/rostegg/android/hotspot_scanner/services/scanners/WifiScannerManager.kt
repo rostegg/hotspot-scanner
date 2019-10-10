@@ -10,11 +10,10 @@ import android.util.Log
 class WifiScannerManager(context: Context) {
 
 
-    private var wifiScannerBase: WifiScannerBase = WifiActiveScanner(context)
-        /*when (Build.VERSION.SDK_INT) {
-        in Int.MIN_VALUE..26 ->
+    private var wifiScannerBase: WifiScannerBase = when (Build.VERSION.SDK_INT) {
+        in Int.MIN_VALUE..26 -> WifiActiveScanner(context)
         else -> WifiRttScanner(context)
-    }*/
+    }
 
     fun getScanResult(): List<String> {
         Log.i("WifiManager", "Lets scann")
@@ -22,7 +21,7 @@ class WifiScannerManager(context: Context) {
         Log.i("WifiManagerResult", result.toString())
         var listItems = ArrayList<String>()
         result.forEach{item ->
-            listItems.add(item.BSSID)
+            listItems.add(item.SSID)
         }
         return listItems
     }

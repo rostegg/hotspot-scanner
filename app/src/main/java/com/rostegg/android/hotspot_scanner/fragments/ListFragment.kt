@@ -11,15 +11,16 @@ import com.rostegg.android.hotspot_scanner.R
 import com.rostegg.android.hotspot_scanner.services.OUIService
 import com.rostegg.android.hotspot_scanner.services.SessionStorage
 import org.koin.android.ext.android.inject
+import kotlin.reflect.KProperty
 
 class ListFragment: Fragment(), FragmentMetadata {
 
     override val fragmentTitle: String
         get() = "List"
 
-    var listItems = ArrayList<String>()
-    var adapter: ArrayAdapter<String>? = null
-
+    //var listItems = ArrayList<String>()
+    //var adapter: ArrayAdapter<String>? = null
+    private val adapter: ArrayAdapter<String> by inject()
     //private val ouiService: OUIService by inject()
     private val sessionStorage: SessionStorage by inject()
     override fun onCreateView(
@@ -31,11 +32,7 @@ class ListFragment: Fragment(), FragmentMetadata {
 
         var listView= view?.findViewById(R.id.sessionListView) as ListView
 
-        adapter = ArrayAdapter(
-            this.activity!!.applicationContext,
-            android.R.layout.simple_spinner_item,
-            sessionStorage.currentStorage
-        )
+
 
         listView.adapter = adapter
         /*ouiService.ouiListCached.forEach{ item ->

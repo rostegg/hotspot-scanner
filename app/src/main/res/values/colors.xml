@@ -2,5 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#D8D4C5</color>
+    <color name="cyanea_primary_reference">#162641</color>
+    <color name="cyanea_accent_reference">#113A55</color>
 </resources>
